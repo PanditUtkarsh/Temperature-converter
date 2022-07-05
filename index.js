@@ -1,36 +1,32 @@
-// userInput.addEventListener("click", () =>{
-// var userInput = document.getElementById('input');
-// })
 const takesinput = () =>
 {
     var userInput = document.getElementById('input').value;
     let selects = document.getElementById('select');
     let option = select.options[selects.selectedIndex].value;
-    // console.log(userInput);
-    // console.log(option);
 
-    const fahtocel = (celcius) =>
+    if (option === "fah") 
     {
-        let c = ((celcius-32)*5/9);
-        return c;
+        const fahtocel = (userInput) =>{
+            let c = ((userInput-32)*5/9);
+            document.getElementById('result').value = `${c}°cel`;
+        }
+        fahtocel(userInput)
     }
-    const celtofah = (fahrenheit) =>
+    else if(option === "cel")
     {
-        let f = ((fahrenheit * 9/5) + 32);
-        return f;
+        const celtofah = (userInput) =>{
+            let f = ((userInput * 9/5) + 32);
+            document.getElementById('result').value = `${f}°fah`;    
+        }
+        celtofah(userInput)
     }
-    var results
-    if (option == "fah") 
+    else
     {
-        results = fahtocel(userInput)
-        // document.getElementById('result').innerHTML = results;
-        console.log(results);
-    }
-    else 
-    {
-        results = celtofah(userInput)
-        // document.getElementById('result').innerHTML = results;    
-        console.log(results);
-
+        const keltofahcel = (userInput) =>{
+            let f = Math.round((userInput - 32) * 5/9 + 273.15);
+            let c = Math.round((userInput - 273.15))
+            document.getElementById('result').value = `${f}°fah ${c}°cel`;    
+        }
+        keltofahcel(userInput)
     }
 }
